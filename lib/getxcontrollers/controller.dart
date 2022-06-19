@@ -13,8 +13,8 @@ class MyController extends GetxController {
   }
 void DeleteStudent(value){
   box.deleteAt(value);
-  
-
+  print('hello');
+  update();
     //  value.update();
 }
 
