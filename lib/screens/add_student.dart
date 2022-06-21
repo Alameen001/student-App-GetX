@@ -22,9 +22,8 @@ class AddStudentscreen extends StatelessWidget {
 
   final _ageController = TextEditingController();
 
-  final _phoneController = TextEditingController();
-
   final _classcontroller = TextEditingController();
+  final _phoneController = TextEditingController();
 
   var _image;
   final MyController controller = Get.put(MyController());
@@ -38,17 +37,15 @@ class AddStudentscreen extends StatelessWidget {
         // backgroundColor: Colors.teal
         backgroundColor: Colors.black,
       ),
-      body: Column(mainAxisAlignment: MainAxisAlignment.center,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             height: MediaQuery.of(context).size.height * 0.82,
             width: double.infinity,
-     
             child: Padding(
               padding: const EdgeInsets.all(20.0),
-              
               child: Container(
-                
                 decoration: BoxDecoration(
                   // gradient: LinearGradient(
                   //   begin: Alignment.topLeft,
@@ -70,7 +67,6 @@ class AddStudentscreen extends StatelessWidget {
                   color: Color.fromARGB(255, 214, 223, 222),
                   borderRadius: BorderRadius.circular(20),
                 ),
-                
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Column(
@@ -85,17 +81,21 @@ class AddStudentscreen extends StatelessWidget {
                                 // color: Colors.black,
                                 decoration: _image == null
                                     ? BoxDecoration(
-                                        borderRadius: BorderRadius.circular(500),
+                                        borderRadius:
+                                            BorderRadius.circular(500),
                                         image: DecorationImage(
                                           fit: BoxFit.cover,
-                                          image: AssetImage("assets/person.jpeg"),
+                                          image:
+                                              AssetImage("assets/person.jpeg"),
                                         ),
                                       )
                                     : BoxDecoration(
-                                        borderRadius: BorderRadius.circular(500),
+                                        borderRadius:
+                                            BorderRadius.circular(500),
                                         image: DecorationImage(
                                             fit: BoxFit.cover,
-                                            image: Image.file(File(_image)).image),
+                                            image:
+                                                Image.file(File(_image)).image),
                                       ),
                               );
                             },
@@ -109,9 +109,10 @@ class AddStudentscreen extends StatelessWidget {
                               },
                               style: ButtonStyle(
                                 backgroundColor:
-                                    MaterialStateProperty.all<Color>(Colors.black),
-                                shape:
-                                    MaterialStateProperty.all(const CircleBorder()),
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.black),
+                                shape: MaterialStateProperty.all(
+                                    const CircleBorder()),
                               ),
                               child: const Icon(
                                 Icons.photo_camera,
@@ -141,24 +142,23 @@ class AddStudentscreen extends StatelessWidget {
                             height: 10,
                           ),
                           Feild(
-                            control: _phoneController,
-                            texthint: 'ph',
-                            type: TextInputType.number,
+                            control: _classcontroller,
+                            texthint: 'class',
+                            type: TextInputType.name,
                           ),
                           SizedBox(
                             height: 10,
                           ),
                           Feild(
-                            control: _classcontroller,
-                            texthint: 'class',
-                            type: TextInputType.name,
+                            control: _phoneController,
+                            texthint: 'ph',
+                            type: TextInputType.number,
                           ),
                         ],
                       ),
                       SizedBox(
                         height: 15,
                       ),
-                    
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -170,6 +170,7 @@ class AddStudentscreen extends StatelessWidget {
                               Get.offAll(ListStudent());
                               Get.snackbar("Student", "Student Add",
                                   backgroundColor: Colors.black,
+                                  duration: Duration(seconds: 1),
                                   colorText: Colors.white);
                             },
                             child: Text('Add'),
@@ -203,7 +204,7 @@ class AddStudentscreen extends StatelessWidget {
     return StudentModel(
         name: _namecontroller.text,
         age: _ageController.text,
-        Class: _phoneController.text,
+        Class: _classcontroller.text,
         phone: _phoneController.text,
         image: _image);
   }
@@ -233,7 +234,7 @@ class AddStudentscreen extends StatelessWidget {
                               _image = image;
                               controller.update();
                               //   });
-                           Get.back();
+                              Get.back();
                             },
                             icon: Icon(Icons.photo)),
                         IconButton(
@@ -255,5 +256,4 @@ class AddStudentscreen extends StatelessWidget {
           );
         });
   }
- 
 }

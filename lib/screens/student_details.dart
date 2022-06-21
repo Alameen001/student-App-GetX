@@ -45,6 +45,10 @@ class StudentDetails extends StatelessWidget {
       //     ],
       //   ),
       // ),
+
+
+
+
       body: Center(
 
         child: Stack(

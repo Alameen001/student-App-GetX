@@ -15,7 +15,7 @@ class EditStudent extends StatelessWidget {
   EditStudent({Key? key, required this.index}) : super(key: key);
   final int index;
 
-  final MyController controller = Get.put(MyController());
+  final MyController  controller = Get.put(MyController());
 
   final _namecontroller = TextEditingController();
 
@@ -32,10 +32,13 @@ class EditStudent extends StatelessWidget {
     final data = model[index];
     _namecontroller.text = data.name;
     _ageController.text = data.age;
+     _classcontroller.text = data.Class;
     _phoneController.text = data.phone;
-    _classcontroller.text = data.Class;
+   
+    _image =data.image;
 
-    return Scaffold(
+
+    return Scaffold( 
       resizeToAvoidBottomInset: false,
       body: SafeArea(
           child: Container(
@@ -60,7 +63,7 @@ class EditStudent extends StatelessWidget {
                             borderRadius: BorderRadius.circular(300),
                             image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: Image.file(File(model[index].image))
+                                image: Image.file(File(_image))
                                     .image)),
                       ),
                       Positioned(
@@ -111,18 +114,20 @@ class EditStudent extends StatelessWidget {
                 height: 10,
               ),
               Feild(
-                control: _phoneController,
-                texthint: 'Phpne',
-                type: TextInputType.number,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Feild(
                 control: _classcontroller,
                 texthint: 'C lass',
                 type: TextInputType.name,
               ),
+             
+              SizedBox(
+                height: 10,
+              ),
+               Feild(
+                control: _phoneController,
+                texthint: 'Phpne',
+                type: TextInputType.number,
+              ),
+              
               SizedBox(
                 height: 10,
               ),
@@ -140,6 +145,13 @@ class EditStudent extends StatelessWidget {
                           onPressed: () {
                             box.putAt(index, updateButton());
                             controller.update();
+                            Get.snackbar("Student Updated","" ,
+                            backgroundColor: Colors.black,
+                            colorText: Colors.white,
+                            icon: Icon(Icons.person, color: Colors.white),
+                            duration: Duration(seconds: 1),
+                            snackPosition: SnackPosition.BOTTOM
+                            );
 
                             Get.offAll(ListStudent());
                             print("uuuuuupppp..........................date");
